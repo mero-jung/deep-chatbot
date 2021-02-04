@@ -1,4 +1,7 @@
 # 필요한 모듈 임포트
+import sys
+sys.path.append('/Users/wxg12/Documents/python_workspace/chatbot')
+
 import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import preprocessing
@@ -7,14 +10,14 @@ from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, Gl
 
 
 # 데이터 읽어오기
-train_file = "total_train_data.csv"
+train_file = "models/intent/total_train_data.csv"
 data = pd.read_csv(train_file, delimiter=',')
 queries = data['query'].tolist()
 intents = data['intent'].tolist()
 
 from utils.Preprocess import Preprocess
-p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin',
-               userdic='../../utils/user_dic.tsv')
+p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',
+               userdic='utils/user_dic.tsv')
 
 # 단어 시퀀스 생성
 sequences = []
@@ -107,4 +110,4 @@ print('loss: %f' % (loss))
 
 
 # 모델 저장  ○8
-model.save('intent_model.h5')
+model.save('models/intent/intent_model.h5')

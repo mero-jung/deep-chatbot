@@ -1,15 +1,18 @@
+import sys
+sys.path.append('/Users/wxg12/Documents/python_workspace/chatbot')
+
 import pickle
 from utils.Preprocess import Preprocess
 
 # 단어 사전 불러오기
-f = open("../train_tools/dict/chatbot_dict.bin", "rb")
+f = open("train_tools/dict/chatbot_dict.bin", "rb")
 word_index = pickle.load(f)
 f.close()
 
 sent = "내일 오전 10시에 탕수육 주문하고 싶어 ㅋㅋ"
 
 # 전처리 객체 생성
-p = Preprocess(userdic='../utils/user_dic.tsv')
+p = Preprocess(userdic='utils/user_dic.tsv')
 
 # 형태소분석기 실행
 pos = p.pos(sent)

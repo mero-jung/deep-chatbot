@@ -26,7 +26,8 @@ class Database:
             user=self.user,
             password=self.password,
             db=self.db_name,
-            charset=self.charset
+            charset=self.charset,
+            autocommit=True
         )
 
     # DB 연결 닫기

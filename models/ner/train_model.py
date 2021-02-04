@@ -1,5 +1,12 @@
+import sys
+sys.path.append('/Users/wxg12/Documents/python_workspace/chatbot/')
+
 import matplotlib.pyplot as plt
 import tensorflow as tf
+
+#from tensorflow.python.framework.ops import disable_eager_execution
+#disable_eager_execution()
+
 from tensorflow.keras import preprocessing
 from sklearn.model_selection import train_test_split
 import numpy as np
@@ -21,11 +28,11 @@ def read_file(file_name):
                 this_sent.append(tuple(l.split()))
     return sents
 
-p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin',
-               userdic='../../utils/user_dic.tsv')
+p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',
+               userdic='utils/user_dic.tsv')
 
 # 학습용 말뭉치 데이터를 불러옴
-corpus = read_file('ner_train.txt')
+corpus = read_file('models/ner/ner_train.txt')
 
 # 말뭉치 데이터에서 단어와 BIO 태그만 불러와 학습용 데이터셋 생성
 sentences, tags = [], []
@@ -97,7 +104,7 @@ model.compile(loss='categorical_crossentropy', optimizer=Adam(0.01), metrics=['a
 model.fit(x_train, y_train, batch_size=128, epochs=10)
 
 print("평가 결과 : ", model.evaluate(x_test, y_test)[1])
-model.save('ner_model.h5')
+model.save('models/ner/ner_model.h5')
 
 
 # 시퀀스를 NER 태그로 변환

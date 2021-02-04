@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/Users/wxg12/Documents/python_workspace/chatbot')
+
 import pymysql
 from config.DatabaseConfig import * # DB 접속 정보 불러오기
 

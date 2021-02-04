@@ -1,6 +1,10 @@
 #
 # 챗봇에서 사용하는 사전 파일 생성
 #
+
+import sys
+sys.path.append('/Users/wxg12/Documents/python_workspace/chatbot')
+
 from utils.Preprocess import Preprocess
 from tensorflow.keras import preprocessing
 import pickle
@@ -13,12 +17,12 @@ def read_corpus_data(filename):
 
 
 # 말뭉치 데이터 가져오기
-corpus_data = read_corpus_data('./corpus.txt')
+corpus_data = read_corpus_data('train_tools/dict/corpus.txt')
 
 
 # 망뭉치 데이터에서 키워드만 추출해서 사전 리스트 생성
-p = Preprocess(word2index_dic='chatbot_dict.bin',
-               userdic = '../../utils/user_dic.tsv')
+p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',
+               userdic = 'utils/user_dic.tsv')
 dict = []
 for c in corpus_data:
     pos = p.pos(c[1])
@@ -35,7 +39,7 @@ tokenizer.fit_on_texts(dict)
 word_index = tokenizer.word_index
 
 # 사전 파일 생성
-f = open("chatbot_dict.bin", "wb")
+f = open("train_tools/dict/chatbot_dict.bin", "wb")
 try:
     pickle.dump(word_index, f)
 except Exception as e:

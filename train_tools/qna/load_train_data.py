@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/Users/wxg12/Documents/python_workspace/chatbot')
+
 import pymysql
 import openpyxl
 
@@ -41,7 +44,7 @@ def insert_data(db, xls_row):
         db.commit()
 
 
-train_file = './train_data.xlsx'
+train_file = 'train_tools/qna/train_data.xlsx'
 db = None
 try:
     db = pymysql.connect(
