@@ -9,7 +9,7 @@ f = open("drive/MyDrive/deep-chatbot/train_tools/dict/chatbot_dict.bin", "rb")
 word_index = pickle.load(f)
 f.close()
 
-sent = "정규화에 대해 알고 싶습니다."
+sent = "데이터베이스가 뭔지 알려줘"
 
 # 전처리 객체 생성
 p = Preprocess(userdic='drive/MyDrive/deep-chatbot/utils/user_dic.tsv')

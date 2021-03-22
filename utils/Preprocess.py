@@ -21,10 +21,11 @@ class Preprocess:
         # 관계언 제거, 기호 제거
         # 어미 제거
         # 접미사 제거
+        # self.exclusion_tags = []
+        #'SF', 'SP', 'SS', 'SE', 'SO',
         self.exclusion_tags = [
             'JKS', 'JKC', 'JKG', 'JKO', 'JKB', 'JKV', 'JKQ',
             'JX', 'JC',
-            'SF', 'SP', 'SS', 'SE', 'SO',
             'EP', 'EF', 'EC', 'ETN', 'ETM',
             'XSN', 'XSV', 'XSA'
         ]
